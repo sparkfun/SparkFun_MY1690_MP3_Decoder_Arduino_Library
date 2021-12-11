@@ -1,0 +1,63 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+MY1690	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+play	KEYWORD2
+pause	KEYWORD2
+playNext	KEYWORD2
+playPrevious	KEYWORD2
+volumeUp	KEYWORD2
+volumeDown	KEYWORD2
+reset	KEYWORD2
+fastForward	KEYWORD2
+rewind	KEYWORD2
+playPause	KEYWORD2
+stopPlaying	KEYWORD2
+
+setVolume	KEYWORD2
+setEQ	KEYWORD2
+setPlayMode	KEYWORD2
+playTrackNumber	KEYWORD2
+
+getPlayStatus	KEYWORD2
+getVolume	KEYWORD2
+getEQ	KEYWORD2
+getPlayMode	KEYWORD2
+getVersion	KEYWORD2
+getSongCount	KEYWORD2
+getTrackNumber	KEYWORD2
+getTrackElaspedTime	KEYWORD2
+
+isConnected	KEYWORD2
+isPlaying	KEYWORD2
+
+setPlayModeFull	KEYWORD2
+setPlayModeFolder	KEYWORD2
+setPlayModeSingle	KEYWORD2
+setPlayModeRandom	KEYWORD2
+setPlayModeNoLoop	KEYWORD2
+
+sendCommand	KEYWORD2
+
+getNumberResponse	KEYWORD2
+getOKResponse	KEYWORD2
+getSTOPResponse	KEYWORD2
+getStringResponse	KEYWORD2
+
+responseAvailable	KEYWORD2
+
+clearBuffer	KEYWORD2
+
+######################################
+# Constants (LITERAL1)
+#######################################
+
