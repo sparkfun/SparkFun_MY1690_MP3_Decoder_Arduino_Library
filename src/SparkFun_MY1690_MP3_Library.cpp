@@ -44,7 +44,8 @@ bool MY1690::begin(Stream &serialPort, uint8_t pin)
 // getVersion returns the rough interpretation of this string in int form. See getNumberReponse for more info.
 uint16_t MY1690::getVersion(void)
 {
-    commandBytes[0] = MP3_COMMAND_GET_VERSION_NUMBER;
+    commandBytes[0] = MP3_COMMAND_PLAY;
+    // commandBytes[0] = MP3_COMMAND_GET_VERSION_NUMBER;
     sendCommand(1);
 
     return (getNumberResponse());

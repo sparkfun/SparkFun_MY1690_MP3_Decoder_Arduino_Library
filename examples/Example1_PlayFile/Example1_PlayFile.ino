@@ -24,7 +24,7 @@
 
 //For boards that support software serial
 #include "SoftwareSerial.h"
-SoftwareSerial serialMP3(6, 4); //RX on Arduino connected to TX on MY1690's, TX on Arduino connected to the MY1690's RX pin
+SoftwareSerial serialMP3(5, 2); //RX on Arduino connected to TX on MY1690's, TX on Arduino connected to the MY1690's RX pin; format: SoftwareSerial mySerial(rx, tx)
 
 //For boards that have multiple hardware serial ports
 //HardwareSerial serialMP3(2); //Create serial port on ESP32: TX on 17, RX on 16
