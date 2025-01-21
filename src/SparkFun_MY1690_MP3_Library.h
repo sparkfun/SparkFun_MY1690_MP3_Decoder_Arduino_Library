@@ -87,7 +87,7 @@ public:
 	bool begin(Stream &serialPort = Serial, uint8_t pin = 255);
 
 	// Control functions
-	bool play(void);
+	void play(void);
 	bool pause(void);
 	bool playNext(void);
 	bool playPrevious(void);
@@ -129,9 +129,9 @@ public:
 	uint16_t getNumberResponse(void);
 	bool getOKResponse(void);
 	bool getSTOPResponse(void);
-	bool getStringResponse(const char *expectedResponse, uint8_t expectedLength);
+	bool getStringResponse(const char *expectedResponse);
 
-	bool responseAvailable(uint8_t maxTimeout = 50);
+	bool responseAvailable(uint8_t maxTimeout = 100);
 
 	void clearBuffer(void);
 };
