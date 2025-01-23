@@ -21,13 +21,14 @@
   GND -> GND
 
   Don't forget to load some MP3s on your sdCard and plug it in too!
+  Note: Track must be named 0001.mp3 to myMP3.playTrackNumber(1)
 */
 
 #include "SparkFun_MY1690_MP3_Library.h" // Click here to get the library: http://librarymanager/All#SparkFun_MY1690
 
 //For boards that support software serial
 #include "SoftwareSerial.h"
-SoftwareSerial serialMP3(6, 4); //RX on Arduino connected to TX on MY1690's, TX on Arduino connected to the MY1690's RX pin
+SoftwareSerial serialMP3(2, 3); //RX on Arduino connected to TX on MY1690's, TX on Arduino connected to the MY1690's RX pin
 
 //For boards that have multiple hardware serial ports
 //HardwareSerial serialMP3(2); //Create serial port on ESP32: TX on 17, RX on 16
@@ -50,7 +51,7 @@ void setup()
   int songCount = myMP3.getSongCount();
   if (songCount == 0)
   {
-    Serial.println(F("Oh no! No songs found. Try adding songs or plugging in the sd card. Freezing."));
+    Serial.println(F("Oh no! No songs found. Make sure the SD card is inserted and there are MP3s on it. Freezing."));
     while (1);
   }
 
@@ -60,21 +61,27 @@ void setup()
   Serial.print(F("MY1690 Version: "));
   Serial.println(myMP3.getVersion());
 
-  //You can check to see if a given command was received correctly
-  bool response = myMP3.play(); //Will play the lowest numbered song in the folder
-  Serial.print(F("Play reponse: "));
-  if (response == true)
-    Serial.println(F("true"));
-  else
-    Serial.println(F("false"));
+  myMP3.play(); //Will play the lowest numbered song in the folder
 
-  Serial.print(F("Playback Status: "));
-  Serial.println(myMP3.getPlayStatus());
+  //It takes ~30ms for a track to start playing. If we check immediately, the track has not yet started.
+  delay(50);
 
-  myMP3.setVolume(25);
+  int playStatus = myMP3.getPlayStatus();
+  // 0 = stop, 1 = play, 2 = pause, 3 = fast forward, 4 = rewind
+
+  Serial.print(F("playStatus: "));
+  Serial.print(playStatus);
+  if (playStatus == 1)
+    Serial.println(F(" (playing)"));
+  else if (playStatus == 0)
+    Serial.println(F(" (stopped)"));
+
+  myMP3.setVolume(5); //30 is loudest. 5 is comfortable with headphones. 0 is mute.
 
   Serial.print(F("Volume: "));
   Serial.println(myMP3.getVolume());
+
+  myMP3.setPlayModeNoLoop();
 
   mainMenu();
 }
@@ -86,20 +93,28 @@ void loop()
     byte incoming = Serial.read();
     if (incoming == 's')
     {
-      myMP3.stopPlaying();
+      if(myMP3.stopPlaying() == true)
+        Serial.println("Stop success");
+      else
+        Serial.println("Stop command failed");
     }
     else if (incoming == 'x')
     {
-      myMP3.reset();
+      if (myMP3.reset() == true)
+        Serial.println("Reset success");
+      else
+        Serial.println("Reset command failed");
     }
     else if (incoming == 'a')
     {
       myMP3.volumeUp();
+      Serial.print("Volume: ");
       Serial.println(myMP3.getVolume());
     }
     else if (incoming == 'z')
     {
       myMP3.volumeDown();
+      Serial.print("Volume: ");
       Serial.println(myMP3.getVolume());
     }
     else if (incoming == 'f')
@@ -128,7 +143,10 @@ void loop()
     else if (incoming == 'm')
     {
       int currentMode = myMP3.getPlayMode();
-      currentMode++; //Go to next mode. Device automatically wraps.
+      currentMode++; //Go to next mode.
+
+      if(currentMode > 4) 
+        currentMode = 0;
 
       myMP3.setPlayMode(currentMode);
 
@@ -152,6 +170,8 @@ void loop()
       Serial.println(F("Track number to play: "));
       while (Serial.available() == 0) delay(1);
       int value = Serial.parseInt();
+      
+      // Note: Track must be named 0001.mp3 to myMP3.playTrackNumber(1)
       myMP3.playTrackNumber(value);
     }
     else if (incoming == 'c')
@@ -161,13 +181,17 @@ void loop()
     }
     else if (incoming == 't')
     {
-      Serial.print(F("Current track elapsed time: "));
+      Serial.print(F("Current track elapsed time (s): "));
       Serial.println(myMP3.getTrackElapsedTime());
     }
     else if (incoming == 'T')
     {
-      Serial.print(F("Current track total time: "));
+      Serial.print(F("Current track length (s): "));
       Serial.println(myMP3.getTrackTotalTime());
+    }
+    else if (incoming == '\r' || incoming == '\n')
+    {
+      //Ignore these
     }
     else
     {
