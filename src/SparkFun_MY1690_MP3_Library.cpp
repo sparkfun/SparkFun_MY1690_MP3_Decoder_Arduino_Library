@@ -32,8 +32,6 @@ bool MY1690::begin(Stream &serialPort, uint8_t pin)
     uint8_t x = 0;
     while (isConnected() == false)
     {
-        while(1)
-            ;
         delay(100);
         if (x++ == 15)
             return (false);
