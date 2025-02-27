@@ -23,7 +23,8 @@ Documentation
 --------------
 
 * **[Installing an Arduino Library Guide](https://learn.sparkfun.com/tutorials/installing-an-arduino-library)** - Basic information on how to install an Arduino library.
-
+* **[Hookup Guide](https://docs.sparkfun.com/SparkFun_Serial_MP3_Player_Shield-MY1690X/)** - Tutorial for the SparkFun Serial MP3 Player Shield - MY1690X
+* **[GitHub Hardware Repo](https://github.com/sparkfun/SparkFun_Serial_MP3_Player_Shield-MY1690X)** - Hardware design files and documentation.
 
 Products that use this Library 
 ---------------------------------
