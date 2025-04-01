@@ -10,14 +10,15 @@
   with a serial menu to control the various aspects of the IC.
 
   Feel like supporting our work? Buy a board from SparkFun!
-  https://www.sparkfun.com/products/18642
+  MY1690X Serial MP3 Player Shield: https://www.sparkfun.com/sparkfun-serial-mp3-player-shield-my1690x.html
+  MY1690X Audio Player Breakout: https://www.sparkfun.com/sparkfun-audio-player-breakout-my1690x-16s.html
 
   Hardware Connections:
   MY1690 Pin -> Arduino Pin
   -------------------------------------
-  TXO -> 6
-  RXI -> 4
-  3.3V -> 3.3V
+  TXO -> 8
+  RXI -> 9
+  VIN -> 5V
   GND -> GND
 
   Don't forget to load some MP3s on your sdCard and plug it in too!
@@ -28,7 +29,7 @@
 
 //For boards that support software serial
 #include "SoftwareSerial.h"
-SoftwareSerial serialMP3(2, 3); //RX on Arduino connected to TX on MY1690's, TX on Arduino connected to the MY1690's RX pin
+SoftwareSerial serialMP3(8, 9); //RX on Arduino connected to TX on MY1690's, TX on Arduino connected to the MY1690's RX pin
 
 //For boards that have multiple hardware serial ports
 //HardwareSerial serialMP3(2); //Create serial port on ESP32: TX on 17, RX on 16
