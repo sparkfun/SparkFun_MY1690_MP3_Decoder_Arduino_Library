@@ -1,13 +1,13 @@
 /*!
- * @file SparkFun_MY1690_MP3_Library.cpp
- * @brief  This is a library written for the MY1690 Serial MP3 player
+ * @file SparkFun_SparkFunMY1690_MP3_Library.cpp
+ * @brief  This is a library written for the SparkFunMY1690 Serial MP3 player
  *
  * SparkFun sells these at its website: www.sparkfun.com
  *
  * Do you like this library? Help support SparkFun. Buy a board!
  * https://www.sparkfun.com/products/15050
  *
- * https://github.com/sparkfun/SparkFun_MY1690_MP3_Decoder_Arduino_Library
+ * https://github.com/sparkfun/SparkFun_SparkFunMY1690_MP3_Decoder_Arduino_Library
  *
  * @author SparkFun Electronics
  * @date 2024
@@ -17,11 +17,11 @@
  */
 #include "SparkFun_MY1690_MP3_Library.h"
 
-MY1690::MY1690()
+SparkFunMY1690::SparkFunMY1690()
 {
 }
 
-bool MY1690::begin(Stream &serialPort, uint8_t pin)
+bool SparkFunMY1690::begin(Stream &serialPort, uint8_t pin)
 {
     _serialPort = &serialPort;
     _busyPin = pin;
@@ -43,7 +43,7 @@ bool MY1690::begin(Stream &serialPort, uint8_t pin)
 }
 
 // Try to get the version number from the device
-uint16_t MY1690::getVersion(void)
+uint16_t SparkFunMY1690::getVersion(void)
 {
     commandBytes[0] = MP3_COMMAND_GET_VERSION_NUMBER;
 
@@ -71,7 +71,7 @@ uint16_t MY1690::getVersion(void)
 }
 
 // Verify the device responds correctly with a version number
-bool MY1690::isConnected(void)
+bool SparkFunMY1690::isConnected(void)
 {
     int version = getVersion();
     if (version == 100 || version == 101)
@@ -81,7 +81,7 @@ bool MY1690::isConnected(void)
 }
 
 // Play all songs on the SD card, then loop
-bool MY1690::setPlayModeFull(void)
+bool SparkFunMY1690::setPlayModeFull(void)
 {
     commandBytes[0] = MP3_COMMAND_SET_LOOP_MODE;
     commandBytes[1] = MP3_LOOP_MODE_FULL;
@@ -90,7 +90,7 @@ bool MY1690::setPlayModeFull(void)
 }
 
 // Play all songs in the folder, then loop
-bool MY1690::setPlayModeFolder(void)
+bool SparkFunMY1690::setPlayModeFolder(void)
 {
     commandBytes[0] = MP3_COMMAND_SET_LOOP_MODE;
     commandBytes[1] = MP3_LOOP_MODE_FOLDER;
@@ -99,7 +99,7 @@ bool MY1690::setPlayModeFolder(void)
 }
 
 // Play song, then loop
-bool MY1690::setPlayModeSingle(void)
+bool SparkFunMY1690::setPlayModeSingle(void)
 {
     commandBytes[0] = MP3_COMMAND_SET_LOOP_MODE;
     commandBytes[1] = MP3_LOOP_MODE_SINGLE;
@@ -108,7 +108,7 @@ bool MY1690::setPlayModeSingle(void)
 }
 
 // Play random song, then play another random song, with no end
-bool MY1690::setPlayModeRandom(void)
+bool SparkFunMY1690::setPlayModeRandom(void)
 {
     commandBytes[0] = MP3_COMMAND_SET_LOOP_MODE;
     commandBytes[1] = MP3_LOOP_MODE_RANDOM;
@@ -117,7 +117,7 @@ bool MY1690::setPlayModeRandom(void)
 }
 
 // Play a song, then stop
-bool MY1690::setPlayModeNoLoop(void)
+bool SparkFunMY1690::setPlayModeNoLoop(void)
 {
     commandBytes[0] = MP3_COMMAND_SET_LOOP_MODE;
     commandBytes[1] = MP3_LOOP_MODE_NO_LOOP;
@@ -125,7 +125,7 @@ bool MY1690::setPlayModeNoLoop(void)
     return (getOKResponse());
 }
 
-uint16_t MY1690::getSongCount(void)
+uint16_t SparkFunMY1690::getSongCount(void)
 {
     commandBytes[0] = MP3_COMMAND_GET_SONG_COUNT;
     sendCommand(1);
@@ -133,7 +133,7 @@ uint16_t MY1690::getSongCount(void)
     return (getNumberResponse());
 }
 
-uint16_t MY1690::getTrackNumber(void)
+uint16_t SparkFunMY1690::getTrackNumber(void)
 {
     commandBytes[0] = MP3_COMMAND_GET_CURRENT_TRACK;
     sendCommand(1);
@@ -141,7 +141,7 @@ uint16_t MY1690::getTrackNumber(void)
     return (getNumberResponse());
 }
 
-uint16_t MY1690::getTrackElapsedTime(void)
+uint16_t SparkFunMY1690::getTrackElapsedTime(void)
 {
     commandBytes[0] = MP3_COMMAND_GET_CURRENT_TRACK_TIME;
     sendCommand(1);
@@ -149,7 +149,7 @@ uint16_t MY1690::getTrackElapsedTime(void)
     return (getNumberResponse());
 }
 
-uint16_t MY1690::getTrackTotalTime(void)
+uint16_t SparkFunMY1690::getTrackTotalTime(void)
 {
     commandBytes[0] = MP3_COMMAND_GET_CURRENT_TRACK_TIME_TOTAL;
     sendCommand(1);
@@ -157,7 +157,7 @@ uint16_t MY1690::getTrackTotalTime(void)
     return (getNumberResponse());
 }
 
-bool MY1690::playTrackNumber(uint16_t trackNumber)
+bool SparkFunMY1690::playTrackNumber(uint16_t trackNumber)
 {
     commandBytes[0] = MP3_COMMAND_SELECT_TRACK_PLAY;
     commandBytes[1] = trackNumber >> 8;   // MSB
@@ -166,9 +166,9 @@ bool MY1690::playTrackNumber(uint16_t trackNumber)
     return (getOKResponse());
 }
 
-bool MY1690::setVolume(uint8_t volumeLevel)
+bool SparkFunMY1690::setVolume(uint8_t volumeLevel)
 {
-    // Any number above 30 will be automatically set to 30 by MY1690
+    // Any number above 30 will be automatically set to 30 by SparkFunMY1690
     // Trim value so return is true
     if (volumeLevel > 30)
         volumeLevel = 30;
@@ -183,7 +183,7 @@ bool MY1690::setVolume(uint8_t volumeLevel)
     return (false);
 }
 
-uint8_t MY1690::getVolume(void)
+uint8_t SparkFunMY1690::getVolume(void)
 {
     commandBytes[0] = MP3_COMMAND_GET_VOLUME;
     sendCommand(1);
@@ -191,27 +191,27 @@ uint8_t MY1690::getVolume(void)
     return (volLevel);
 }
 
-bool MY1690::volumeUp(void)
+bool SparkFunMY1690::volumeUp(void)
 {
     commandBytes[0] = MP3_COMMAND_VOLUME_UP;
     sendCommand(1);
     return (getOKResponse());
 }
-bool MY1690::volumeDown(void)
+bool SparkFunMY1690::volumeDown(void)
 {
     commandBytes[0] = MP3_COMMAND_VOLUME_DOWN;
     sendCommand(1);
     return (getOKResponse());
 }
 
-uint8_t MY1690::getEQ(void)
+uint8_t SparkFunMY1690::getEQ(void)
 {
     commandBytes[0] = MP3_COMMAND_GET_EQ;
     sendCommand(1);
     return (getNumberResponse());
 }
 
-bool MY1690::setEQ(uint8_t eqType)
+bool SparkFunMY1690::setEQ(uint8_t eqType)
 {
     commandBytes[0] = MP3_COMMAND_SET_EQ_MODE;
     commandBytes[1] = eqType;
@@ -219,7 +219,7 @@ bool MY1690::setEQ(uint8_t eqType)
     return (getOKResponse());
 }
 
-bool MY1690::setPlayMode(uint8_t playMode)
+bool SparkFunMY1690::setPlayMode(uint8_t playMode)
 {
     commandBytes[0] = MP3_COMMAND_SET_LOOP_MODE;
     commandBytes[1] = playMode;
@@ -227,14 +227,14 @@ bool MY1690::setPlayMode(uint8_t playMode)
     return (getOKResponse());
 }
 
-uint8_t MY1690::getPlayMode(void)
+uint8_t SparkFunMY1690::getPlayMode(void)
 {
     commandBytes[0] = MP3_COMMAND_GET_LOOP_MODE;
     sendCommand(1);
     return (getNumberResponse());
 }
 
-bool MY1690::isPlaying(void)
+bool SparkFunMY1690::isPlaying(void)
 {
     if (_busyPin == 255)
     {
@@ -249,14 +249,14 @@ bool MY1690::isPlaying(void)
 }
 
 // Responds with '0000 \r\n' (note the space), '0001 \r\n', etc
-uint8_t MY1690::getPlayStatus(void)
+uint8_t SparkFunMY1690::getPlayStatus(void)
 {
     commandBytes[0] = MP3_COMMAND_GET_STATUS;
     sendCommand(1);
     return (getNumberResponse());
 }
 
-void MY1690::play(void)
+void SparkFunMY1690::play(void)
 {
     commandBytes[0] = MP3_COMMAND_PLAY;
     sendCommand(1);
@@ -265,21 +265,21 @@ void MY1690::play(void)
     // User can also use the isPlaying() after 30ms to see if song has started
 }
 
-bool MY1690::pause(void)
+bool SparkFunMY1690::pause(void)
 {
     commandBytes[0] = MP3_COMMAND_PAUSE;
     sendCommand(1);
     return (getOKResponse());
 }
 
-bool MY1690::playNext(void)
+bool SparkFunMY1690::playNext(void)
 {
     commandBytes[0] = MP3_COMMAND_NEXT;
     sendCommand(1);
     return (getOKResponse());
 }
 
-bool MY1690::playPrevious(void)
+bool SparkFunMY1690::playPrevious(void)
 {
     commandBytes[0] = MP3_COMMAND_PREVIOUS;
     sendCommand(1);
@@ -288,7 +288,7 @@ bool MY1690::playPrevious(void)
 
 // Device responds with 'OK'
 // If a song is playing, then ~14ms later 'STOP' is reported
-bool MY1690::stopPlaying(void)
+bool SparkFunMY1690::stopPlaying(void)
 {
     // Use hardware pins or software command
     if (isPlaying() == false)
@@ -308,7 +308,7 @@ bool MY1690::stopPlaying(void)
     return (false);
 }
 
-bool MY1690::reset(void)
+bool SparkFunMY1690::reset(void)
 {
     // Device responds with 'OK'
     // Then 'STOPMP3' ~18ms later
@@ -319,7 +319,7 @@ bool MY1690::reset(void)
 }
 
 // Advance track ~1s
-bool MY1690::fastForward(void)
+bool SparkFunMY1690::fastForward(void)
 {
     commandBytes[0] = MP3_COMMAND_FASTFOWARD;
     sendCommand(1);
@@ -327,7 +327,7 @@ bool MY1690::fastForward(void)
 }
 
 // Rewind track ~1s
-bool MY1690::rewind(void)
+bool SparkFunMY1690::rewind(void)
 {
     commandBytes[0] = MP3_COMMAND_REWIND;
     sendCommand(1);
@@ -335,18 +335,18 @@ bool MY1690::rewind(void)
 }
 
 // Toggle play/pause on this track
-bool MY1690::playPause(void)
+bool SparkFunMY1690::playPause(void)
 {
     commandBytes[0] = MP3_COMMAND_PLAY_PAUSE;
     sendCommand(1);
     return (getOKResponse());
 }
 
-// In version 1.1, sometimes MY1690 responds with '0000 \r\n' to a get command. No OK, and a space.
+// In version 1.1, sometimes SparkFunMY1690 responds with '0000 \r\n' to a get command. No OK, and a space.
 // Sometimes 'OK0001 \r\n'. Ok, and a space. Yay!
 // In version 1.0 it was lower case letters. In v1.1, it's upper case HEX.
 // Convert the four letters to a decimal value
-uint16_t MY1690::getNumberResponse(void)
+uint16_t SparkFunMY1690::getNumberResponse(void)
 {
     const uint8_t maxLength = 9;
     uint8_t okResponseOffset = 0;
@@ -406,13 +406,13 @@ uint16_t MY1690::getNumberResponse(void)
 }
 
 // MY1690 responds with OK (no \n \r) in ASCII to a control command
-bool MY1690::getOKResponse(void)
+bool SparkFunMY1690::getOKResponse(void)
 {
     return (getStringResponse("OK"));
 }
 
 // Returns true if MY1690 responds with a given string
-bool MY1690::getStringResponse(const char *expectedResponse)
+bool SparkFunMY1690::getStringResponse(const char *expectedResponse)
 {
     uint8_t expectedLength = strlen(expectedResponse);
 
@@ -448,7 +448,7 @@ bool MY1690::getStringResponse(const char *expectedResponse)
 }
 
 // Returns false if no serial data is seen after maxTimeout
-bool MY1690::responseAvailable(uint8_t maxTimeout)
+bool SparkFunMY1690::responseAvailable(uint8_t maxTimeout)
 {
     uint8_t counter = 0;
 
@@ -462,7 +462,7 @@ bool MY1690::responseAvailable(uint8_t maxTimeout)
     return (true);
 }
 
-void MY1690::clearBuffer(void)
+void SparkFunMY1690::clearBuffer(void)
 {
     while (_serialPort->available())
     {
@@ -472,7 +472,7 @@ void MY1690::clearBuffer(void)
     return;
 }
 
-void MY1690::sendCommand(uint8_t commandLength)
+void SparkFunMY1690::sendCommand(uint8_t commandLength)
 {
     clearBuffer(); // Clear anything in the buffer
 

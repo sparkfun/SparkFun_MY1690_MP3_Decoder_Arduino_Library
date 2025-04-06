@@ -34,7 +34,7 @@ SoftwareSerial serialMP3(8, 9); //RX on Arduino connected to TX on MY1690's, TX 
 //For boards that have multiple hardware serial ports
 //HardwareSerial serialMP3(2); //Create serial port on ESP32: TX on 17, RX on 16
 
-MY1690 myMP3;
+SparkFunMY1690 myMP3;
 
 void setup()
 {

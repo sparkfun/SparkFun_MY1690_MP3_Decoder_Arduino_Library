@@ -40,7 +40,7 @@ HardwareSerial serialMP3(2); // Create serial port on ESP32: TX on 17, RX on 16
 SoftwareSerial serialMP3(8, 9);
 #endif
 
-MY1690 myMP3;
+SparkFunMY1690 myMP3;
 
 void setup()
 {

@@ -74,7 +74,7 @@
 #define MP3_END_CODE 0xEF
 
 /*!
- * @class MY1690
+ * @class SparkFunMY1690
  * @brief  A library for controlling the MY1690 Serial MP3 player module.
  *
  * This class provides an interface to control the MY1690 MP3 player module
@@ -83,7 +83,7 @@
  *
  * @note The MY1690 module requires a serial connection and optionally a busy pin.
  */
-class MY1690
+class SparkFunMY1690
 {
 
   protected:
@@ -93,7 +93,7 @@ class MY1690
   public:
     uint8_t commandBytes[MP3_NUM_CMD_BYTES];
 
-    MY1690();
+    SparkFunMY1690();
 
     /**
      * @brief Initializes the MY1690 MP3 player module.
