@@ -6,7 +6,7 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-MY1690	KEYWORD1
+SparkFunMY1690	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
