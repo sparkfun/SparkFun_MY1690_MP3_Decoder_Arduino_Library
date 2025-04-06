@@ -1,20 +1,20 @@
-/*
-  This is a library written for the MY1690 Serial MP3 player
-  SparkFun sells these at its website: www.sparkfun.com
-  Do you like this library? Help support SparkFun. Buy a board!
-  https://www.sparkfun.com/products/15050
-
-  https://github.com/sparkfun/SparkFun_MY1690_MP3_Decoder_Arduino_Library
-
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-  GNU General Public License for more details.
-
-  You should have received a copy of the GNU General Public License
-  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
+/*!
+ * @file SparkFun_MY1690_MP3_Library.cpp
+ * @brief  This is a library written for the MY1690 Serial MP3 player
+ *
+ * SparkFun sells these at its website: www.sparkfun.com
+ *
+ * Do you like this library? Help support SparkFun. Buy a board!
+ * https://www.sparkfun.com/products/15050
+ *
+ * https://github.com/sparkfun/SparkFun_MY1690_MP3_Decoder_Arduino_Library
+ *
+ * @author SparkFun Electronics
+ * @date 2024
+ * @copyright Copyright (c) 2025, SparkFun Electronics Inc. This project is released under the MIT License.
+ *
+ * SPDX-License-Identifier: MIT
+ */
 #include "SparkFun_MY1690_MP3_Library.h"
 
 MY1690::MY1690()
@@ -49,20 +49,20 @@ uint16_t MY1690::getVersion(void)
 
     // Sometimes it responds with 'OK1.1\r\n'
     sendCommand(1);
-    if(getStringResponse("OK1.1\r\n") == true)
+    if (getStringResponse("OK1.1\r\n") == true)
         return (101);
 
     // Sometimes it responds with '1.1\r\n'
     sendCommand(1);
-    if(getStringResponse("1.1\r\n") == true)
+    if (getStringResponse("1.1\r\n") == true)
         return (101);
 
     sendCommand(1);
-    if(getStringResponse("OK1.0\r\n") == true)
+    if (getStringResponse("OK1.0\r\n") == true)
         return (100);
 
     sendCommand(1);
-    if(getStringResponse("1.0\r\n") == true)
+    if (getStringResponse("1.0\r\n") == true)
         return (100);
 
     sendCommand(1);
@@ -170,7 +170,7 @@ bool MY1690::setVolume(uint8_t volumeLevel)
 {
     // Any number above 30 will be automatically set to 30 by MY1690
     // Trim value so return is true
-    if(volumeLevel > 30)
+    if (volumeLevel > 30)
         volumeLevel = 30;
 
     commandBytes[0] = MP3_COMMAND_SET_VOLUME;
@@ -290,15 +290,15 @@ bool MY1690::playPrevious(void)
 // If a song is playing, then ~14ms later 'STOP' is reported
 bool MY1690::stopPlaying(void)
 {
-    //Use hardware pins or software command
+    // Use hardware pins or software command
     if (isPlaying() == false)
         return (true);
 
     commandBytes[0] = MP3_COMMAND_STOP;
     sendCommand(1);
-    
-    //v1.1 doesn't respond with OK or STOP, instead the isPlaying can be used    
-    //getOKResponse();
+
+    // v1.1 doesn't respond with OK or STOP, instead the isPlaying can be used
+    // getOKResponse();
 
     delay(10); // IC takes 5ms to stop a track
 
@@ -369,17 +369,17 @@ uint16_t MY1690::getNumberResponse(void)
         }
         else if (i <= (3 + okResponseOffset))
         {
-            //Added because getVersion response is three characters long
-            if (incoming != '\r' && incoming != '\n') 
+            // Added because getVersion response is three characters long
+            if (incoming != '\r' && incoming != '\n')
             {
-            // Convert ASCII HEX values to decimal
-            responseValue <<= 4;
-            if (incoming >= '0' && incoming <= '9')
-                responseValue += (incoming - '0');
-            else if (incoming >= 'A' && incoming <= 'Z')
-                responseValue += (incoming - 'A') + 10;
-            else if (incoming >= 'a' && incoming <= 'z')
-                responseValue += (incoming - 'a') + 10;
+                // Convert ASCII HEX values to decimal
+                responseValue <<= 4;
+                if (incoming >= '0' && incoming <= '9')
+                    responseValue += (incoming - '0');
+                else if (incoming >= 'A' && incoming <= 'Z')
+                    responseValue += (incoming - 'A') + 10;
+                else if (incoming >= 'a' && incoming <= 'z')
+                    responseValue += (incoming - 'a') + 10;
             }
         }
         else if (incoming == '\n')

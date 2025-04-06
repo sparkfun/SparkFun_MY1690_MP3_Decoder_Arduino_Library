@@ -1,48 +1,52 @@
-SparkFun MY1690 MP3 Decoder Arduino Library
-========================================
+![SparkFun MY1690 MP3 Decoder Arduino Library](docs/images/gh-banner-my1690-library.png "SparkFun MY1690 MP3 Decoder Arduino Library")
 
-![SparkFun Serial MP3 Player Shield - MY1690X]()
+# SparkFun MY1690 MP3 Decoder Arduino Library
 
-[*SparkFun Serial MP3 Player Shield - MY1690X (DEV-28021)*](
+Arduino Library for the SparkFun MY1690 MP3 enabled breakout boards
 
-<!-- This library provides full access to the functions of the WT2003S MP3 decoder through a serial connection and a "busy" pin. This library is very simple to use with either a hardware or software serial port. The simple dependencies (HardwareSerial and SoftwareSerial) make it suitable for use on any Arduino-compatible platform. 
-
-The WT2003S combines two functions needed to play .mp3 files into one package and adds a simple serial control interface. Normally to play a .mp3 file one would need to choose a decoder IC AND provide a method for storing and selecting the files. The WT2003S removes that complexity by combining an SD card interface and .mp3 decoder. Now in order to play a song all you need to do is save it to an SD card, plug it into the WT2003S breakout, and send a few commands over serial. This allows you to easily integrate sound into any Arduino project.
-
-This library is intended for use with the [WT2003S MP3 Decoder Breakout board](https://www.sparkfun.com/products/28021, as opposed to another option employing the WT2003S -- the [Qwiic MP3 Trigger](https://www.sparkfun.com/products/14808). In case you are wondering which to use here is a little breakdown: If you want direct access to the WT2003S IC for complete control *and* you have a spare serial port (Hardware or Software) in your project then the Breakout board is good for you. If your project is running low on pins and you already use the I2C bus, or you want to trigger .mp3s without even using an external microcontroller then the Qwiic MP3 Trigger is right for you! -->
-
-Repository Contents
--------------------
-
-* **/examples** - Example sketches for the library (.ino). Run these from the Arduino IDE.
-* **/src** - Source files for the library (.cpp, .h).
-* **keywords.txt** - Keywords from this library that will be highlighted in the Arduino IDE.
-* **library.properties** - General library properties for the Arduino package manager.
-
-Documentation
---------------
-
-* **[Installing an Arduino Library Guide](https://learn.sparkfun.com/tutorials/installing-an-arduino-library)** - Basic information on how to install an Arduino library.
-* **[Hookup Guide](https://docs.sparkfun.com/SparkFun_Serial_MP3_Player_Shield-MY1690X/)** - Tutorial for the SparkFun Serial MP3 Player Shield - MY1690X
-* **[GitHub Hardware Repo](https://github.com/sparkfun/SparkFun_Serial_MP3_Player_Shield-MY1690X)** - Hardware design files and documentation.
-
-Products that use this Library 
----------------------------------
-
-* [DEV-28021]( - V1.1
-
-Version History
----------------
-* [V 1.0.0](https://github.com/sparkfun/SparkFun_WT2003S_MP3_Decoder_Arduino_Library/releases/tag/1.0.0) - Initial release
+![License](https://img.shields.io/github/license/sparkfun/SparkFun_MY1690_MP3_Decoder_Arduino_Library)
+![Release](https://img.shields.io/github/v/release/sparkfun/SparkFun_MY1690_MP3_Decoder_Arduino_Library)
+![Release Date](https://img.shields.io/github/release-date/sparkfun/SparkFun_MY1690_MP3_Decoder_Arduino_Library)
+![Documentation - build](https://img.shields.io/github/actions/workflow/status/sparkfun/SparkFun_MY1690_MP3_Decoder_Arduino_Library/build-deploy-ghpages.yml?label=doc%20build)
+![Compile - Test](https://img.shields.io/github/actions/workflow/status/sparkfun/SparkFun_MY1690_MP3_Decoder_Arduino_Library/compile-sketch.yml?label=compile%20test)
+![GitHub issues](https://img.shields.io/github/issues/sparkfun/SparkFun_MY1690_MP3_Decoder_Arduino_Library)
 
 
-License Information
--------------------
+This library provides full access to the functions of the MY1690 MP3 decoder through a serial connection and a "busy" pin. This library is very simple to use with either a hardware or software serial port. The simple dependencies (HardwareSerial and SoftwareSerial) make it suitable for use on any Arduino-compatible platform.
 
-This product is _**open source**_!
+The MY1690 combines two functions needed to play .mp3 files into one package and adds a simple serial control interface. Normally to play a .mp3 file one would need to choose a decoder IC AND provide a method for storing and selecting the files. The MY1690 removes that complexity by combining an SD card interface and .mp3 decoder. Now in order to play a song all you need to do is save it to an SD card, plug it into the MY1690 breakout, and send a few commands over serial. This allows you to easily integrate sound into any Arduino project.
 
-The **code** is released under the GPL v3 license. See the included LICENSE.md for more information.
+### Supported Products
+This library is intended for use with the following SparkFun Products - available at [www.sparkfun.com](https://www.sparkfun.com). 
 
-Distributed as-is; no warranty is given.
+| Product | Description|
+|--|--|
+|[MY160 MP3 Audio Player - MY1690 Breakout board](https://www.sparkfun.com/products/28021) | The SparkFun Audio Player Breakout - M71690X-16S is a compact serial-controlled audio player designed around the MY1690X-16S decoder that supports both .WAV and .MP3 audio files played from a connected microSD card formatted to FAT16 or FAT32.|
+ |[Serial MP3 Shield - MY1690](https://www.sparkfun.com/products/14808)| The SparkFun Serial MP3 Player Shield - MY1690X is an awesome decoder with the capability of storing music files onto a standard microSD card, giving you the ability to add music or sound effects to any project|
 
-- Your friends at SparkFun.
+## Documentation
+
+|Reference | Description |
+|---|---|
+|[Library Documentation](https://docs.sparkfun.com/SparkFun_MY1690_MP3_Decoder_Arduino_Library/)| The full documentation and API for this Arduino library|
+|[SparkFun Serial MP3 Player Shield](https://github.com/sparkfun/SparkFun_Serial_MP3_Player_Shield-MY1690X/)| Hardware GitHub Repository|
+|[Hook Up Guide - MP3 Player Shield](https://docs.sparkfun.com/SparkFun_Serial_MP3_Player_Shield-MY1690X/) | Hardware Overview and Quick Start for the Serial MP3 Player Shield - MY1690|
+|[SparkFun Audio Player Beakout](https://github.com/sparkfun/SparkFun_Audio_Player_Breakout_MY1690X-16S)| Hardware GitHub Repository|
+|[Hook Up Guide - Audio Player Breakout](https://docs.sparkfun.com/SparkFun_Audio_Player_Breakout_MY1690X-16S/) | Hardware Overview and Quick Start for the Audio Player Breakout - MY1690|
+|[MY1690 IC Datasheet](docs/MY1690X-16SMY1690X‑16S_Voice_Module_User_Manualen.pdf) | Datasheet for the MY1690 IC|
+|[Installing an Arduino Library Guide](https://learn.sparkfun.com/tutorials/installing-an-arduino-library)| Basic information on how to install an Arduino library|
+
+## Examples
+
+The following examples are provided with the library
+
+| Example | Description |
+|---|---|
+|[Play File](examples/Example1_PlayFile/Example1_PlayFile.ino)| The MY1690 has a large number of features. This example presents the user with a serial menu to control the various aspects of the IC.|
+|[Kitchen Sink](examples/Example2_KitchenSink/Example2_KitchenSink.ino)| The MY1690 has a large number of features. This example presents the user with a serial menu to control the all aspects of the IC.|
+
+## License Information
+
+This product is ***open source***!
+
+This product is licensed using the [MIT Open Source License](https://opensource.org/license/mit).
