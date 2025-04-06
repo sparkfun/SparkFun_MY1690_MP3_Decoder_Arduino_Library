@@ -140,7 +140,7 @@ jobs:
           libraries: |
             - source-path: ./
           sketch-paths: |
-            - examples/Example1_PlayFile
+            - testing/Testing1_PlayFile
           enable-warnings-report: true
           enable-deltas-report: true
           verbose: true
