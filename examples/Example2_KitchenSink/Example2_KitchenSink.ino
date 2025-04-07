@@ -39,7 +39,7 @@ SparkFunMY1690 myMP3;
 void setup()
 {
   Serial.begin(115200);
-  Serial.println(F("MY1690 MP3 Example"));
+  Serial.println(F("MY1690 MP3 Example 2 - Kitchen Sink"));
 
   serialMP3.begin(9600); //The MY1690 expects serial communication at 9600bps
 
@@ -77,7 +77,7 @@ void setup()
   else if (playStatus == 0)
     Serial.println(F(" (stopped)"));
 
-  myMP3.setVolume(5); //30 is loudest. 5 is comfortable with headphones. 0 is mute.
+  myMP3.setVolume(15); //30 is loudest. 15 is comfortable with headphones. 0 is mute.
 
   Serial.print(F("Volume: "));
   Serial.println(myMP3.getVolume());
