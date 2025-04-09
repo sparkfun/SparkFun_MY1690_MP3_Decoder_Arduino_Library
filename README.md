@@ -42,8 +42,9 @@ The following examples are provided with the library
 
 | Example | Description |
 |---|---|
-|[Play File](examples/Example1_PlayFile/Example1_PlayFile.ino)| The MY1690 has a large number of features. This example presents the user with a serial menu to control the various aspects of the IC.|
+|[Play File](examples/Example1_PlayFile/Example1_PlayFile.ino)| Play a single .MP3 or .WAV file from the uSD card.
 |[Kitchen Sink](examples/Example2_KitchenSink/Example2_KitchenSink.ino)| The MY1690 has a large number of features. This example presents the user with a serial menu to control the all aspects of the IC.|
+|[Kitchen Sink ESP32](examples/Example3_KitchenSink_ESP32/Example3_KitchenSink_ESP32.ino)| Kitchen Sink example, using Hardware Serial on an ESP32 setup on pins 26 and 27.|
 
 ## License Information
 
